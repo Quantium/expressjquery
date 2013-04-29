@@ -1,4 +1,4 @@
 expressjquery
 =============
 
-NodeJS express and Jquery Sample Project
+This is a NodeJS express and Jquery Sample Project.

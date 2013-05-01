@@ -8,3 +8,5 @@
 {"ts":1367349012572,"patch":[[{"diffs":[[0,"s')\n"],[-1,"            , _ = require('underscore')\n"],[0,"    "]],"start1":61,"start2":61,"length1":48,"length2":8}]],"length":920,"saved":false}
 {"contributors":[],"silentsave":false,"ts":1367358618391,"patch":[[{"diffs":[[0,".hero);\n"],[1,"app.get('/hero/:name',routes.addFact);\n"],[0,"\n\nhttp.c"]],"start1":776,"start2":776,"length1":16,"length2":55}]],"length":959,"saved":false}
 {"ts":1367358625934,"patch":[[{"diffs":[[0,"\napp.get('/hero/"],[-1,":name"],[1,"add-fact"],[0,"',routes.addFact"]],"start1":783,"start2":783,"length1":37,"length2":40}]],"length":962,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1367426429550,"patch":[[{"diffs":[[0,"/add"],[-1,"-"],[0,"fact"]],"start1":798,"start2":798,"length1":9,"length2":8}]],"length":961,"saved":false}
+{"ts":1367426802990,"patch":[[{"diffs":[[0,".hero);\napp."],[-1,"ge"],[1,"pos"],[0,"t('/hero/add"]],"start1":776,"start2":776,"length1":26,"length2":27}]],"length":962,"saved":false}

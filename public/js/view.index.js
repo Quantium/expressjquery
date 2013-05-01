@@ -22,7 +22,7 @@ $(function(){
         var fact = $('#new-fact').val();
         $.ajax({
             type: "POST",
-            url: "/hero/add-fact",
+            url: "/hero/addfact",
             data: JSON.stringify({ name: name, fact: fact }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",

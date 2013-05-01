@@ -1,48 +1,48 @@
-var _ = require('underscore');
+var _               = require('underscore')
+    ,mongoose        = require('mongoose')
+    ,db_lnk          = 'mongodb://sample:123456@isotopo.net/test'
+    ,db              = mongoose.createConnection(db_lnk);
 
-// TODO: Leer esto de una base de datos en mongo
-var heroes = [
-    { 
-    name: 'Chuck Norris', 
-    facts: [
-        'No existe la teoría de la evolución, tan sólo una lista de las especies que Chuck Norris permite vivir. ', 
-        'Chuck Norris no te pisa un pie, sino el cuello.',
-        'Chuck Norris borró la papelera de reciclaje.'
-        ] 
-    },
-    {
-    name: 'Bruce Scheneier',
-    facts: [
-        'Science is defined as mankinds futile attempt at learning Bruce Schneiers private key.', 
-        'Others test numbers to see whether they are prime. Bruce decides whether a number is prime.'
-        ]
-    },
-    {
-    name: 'Arturo Pérez-Reverte',
-    facts: [
-        'Pérez-Reverte se baja música en casa de Ramoncín.', 
-        'Pérez-Reverte no necesita investigar para escribir novela histórica, el pasado cambia conforme teclea en la máquina.'
-        ]
+// Creación de variables para cargar el modelo
+var producto_schema = require('../models/heroe')
+  , Heroe = db.model('Heroe', producto_schema);
+
+exports.index = function (req, res) {
+
+    Heroe.find({},'name',gotHeroes);
+    
+    function gotHeroes (err, heroes) {
+        if (err) {
+            console.log('Error de gotHeroes:',err);
+            //return next();
+        }
+        console.log(heroes);
+        var names = heroes.map(function(p) { return p.name; });
+        return res.render('index', { heroes: names, title: '3M Facts' });
     }
-];
-
-exports.index = function(req, res) {
-    var names = heroes.map(function(p) { return p.name; });
-    res.render('index', { heroes: names, title: '3M Facts' });
 };
 
 exports.hero = function(req, res) {
-    var facts = _(heroes).detect(function (p) { 
-        return p.name == req.params.name;
-    }).facts;
-    res.json(facts);
+    Heroe.findOne({ 'name':req.params.name},'facts',gotHero);
+    
+    function gotHero(err, hero)
+    {
+        if(err){
+            console.log('Error de gotHeros:',err);
+        }
+        //console.log('Obtener Heroe->',hero.facts);
+        res.json(hero.facts);
+    }  
 };
 
 exports.addFact = function(req, res) {
-    var hero = _(heroes).detect(function(p) {
-        return p.name == req.body.name;
-    });
     
-    hero.facts.push(req.body.fact);  
-    res.json({status: 'ok' });
+    Heroe.findOne({'name':req.body.name},gotHero);
+    
+    function gotHero(err,hero)
+    {
+        hero.facts.push(req.body.fact);
+        hero.save();
+        res.json({status:'ok'});
+    }
 }

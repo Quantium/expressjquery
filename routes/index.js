@@ -30,9 +30,19 @@ exports.index = function(req, res) {
     var names = heroes.map(function(p) { return p.name; });
     res.render('index', { heroes: names, title: '3M Facts' });
 };
+
 exports.hero = function(req, res) {
     var facts = _(heroes).detect(function (p) { 
         return p.name == req.params.name;
     }).facts;
     res.json(facts);
 };
+
+exports.addFact = function(req, res) {
+    var hero = _(heroes).detect(function(p) {
+        return p.name == req.body.name;
+    });
+    
+    hero.facts.push(req.body.fact);  
+    res.json({status: 'ok' });
+}

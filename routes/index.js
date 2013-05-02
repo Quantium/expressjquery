@@ -1,6 +1,6 @@
 var _               = require('underscore')
     ,mongoose        = require('mongoose')
-    ,db_lnk          = 'mongodb://sample:123456@isotopo.net/test'
+    ,db_lnk          = 'mongodb://sample:123456@dharma.mongohq.com:10062/letras'
     ,db              = mongoose.createConnection(db_lnk);
 
 // Creación de variables para cargar el modelo

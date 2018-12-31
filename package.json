@@ -10,7 +10,7 @@
   "dependencies": {
     "express": "4.16.0",
     "jade": "*",
-    "mongoose": "3.6.8",
+    "mongoose": "4.13.17",
     "snyk": "^1.95.3"
   },
   "snyk": true

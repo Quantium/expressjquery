@@ -11,7 +11,7 @@
     "express": "4.16.0",
     "jade": "*",
     "mongoose": "4.13.17",
-    "snyk": "^1.95.3"
+    "snyk": "^1.234.0"
   },
   "snyk": true
 }

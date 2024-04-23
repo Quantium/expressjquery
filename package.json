@@ -8,9 +8,9 @@
     "prepare": "npm run snyk-protect"
   },
   "dependencies": {
-    "express": "4.16.0",
+    "express": "4.19.2",
     "jade": "*",
-    "mongoose": "4.13.17",
+    "mongoose": "5.13.20",
     "snyk": "^1.95.3"
   },
   "snyk": true
